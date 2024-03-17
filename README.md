@@ -1,6 +1,7 @@
 # node-express-boilerplate Feature
 nodemon, 
 compression,
-morgan load data,
+morgan logger,
 dotenv,
-express server,
+mvc,
+express server
