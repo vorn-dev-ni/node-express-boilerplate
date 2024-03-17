@@ -1,8 +1,6 @@
-# node-express-boilerplate
-#What I have setup : 
-
-nodemon 
-compression
-morgan load data
-dotenv
-express server
+# node-express-boilerplate Feature
+nodemon, 
+compression,
+morgan load data,
+dotenv,
+express server,
