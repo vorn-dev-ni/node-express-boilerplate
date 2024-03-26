@@ -4,12 +4,10 @@ import cors from "cors";
 import helmet from "helmet";
 import mongoSanitize from "express-mongo-sanitize";
 import morgan from "morgan";
-import { UserRouter } from "./routes/User.js";
 import express from "express";
 import notFound from "./controllers/404.js";
-import { AuthRouter } from "./routes/Auth.js";
-import messageRouter from "./routes/Message.js";
 import { allowCrossDomain } from "./middleware/Cors.js";
+import { userCodeRouter } from "./routes/index.js";
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -28,9 +26,7 @@ const limiter = rateLimit({
 // Apply the rate limiting middleware to all requests.
 app.use(limiter);
 app.use(allowCrossDomain)
-app.use("/api/auth", AuthRouter);
-app.use("/api/users", UserRouter);
-app.use("/api/messages", messageRouter);
+app.use("/api", userCodeRouter);
 app.use((err, req, res, next) => {
   console.error("error", err);
   const errors = err.message?.trim() || err;

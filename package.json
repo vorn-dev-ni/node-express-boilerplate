@@ -1,5 +1,5 @@
 {
-  "name": "auth",
+  "name": "email-otp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
