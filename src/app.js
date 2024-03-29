@@ -7,11 +7,8 @@ import morgan from "morgan";
 import express from "express";
 import { dirname } from "path";
 import notFound from "./controllers/404.js";
-import path from "path";
 import { allowCrossDomain } from "./middleware/Cors.js";
-import { imageRoute } from "./routes/index.js";
 import { fileURLToPath } from "url";
-import { blogRoute } from "./routes/blog.js";
 const __dirName = dirname(fileURLToPath(import.meta.url));
 const app = express();
 app.use(express.json());
@@ -33,8 +30,6 @@ const limiter = rateLimit({
 // Apply the rate limiting middleware to all requests.
 app.use(limiter);
 app.use(allowCrossDomain);
-app.use("/api", imageRoute);
-app.use("/api", blogRoute);
 app.use((err, req, res, next) => {
   console.error("error", err);
   const errors = err.message?.trim() || err;
