@@ -1,6 +1,11 @@
-import express from "express"
-import CodeController from "../controllers/index.js"
-export const userCodeRouter = express.Router()
+import express from "express";
+import ImageController from "../controllers/ImageController.js";
+export const imageRoute = express.Router();
 
-userCodeRouter.post('/generate-otp',CodeController.generateCode)
-userCodeRouter.post('/verify-otp',CodeController.verifyCode)
+imageRoute
+  .route("/upload")
+  .post(ImageController.uploadSingleImage, ImageController.saveImage);
+  
+  imageRoute
+  .route("/upload/multi")
+  .post(ImageController.uploadSingleImage, ImageController.saveImage);

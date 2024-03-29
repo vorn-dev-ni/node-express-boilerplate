@@ -1,7 +1,7 @@
 import app from "./src/app.js";
 import "dotenv/config";
 import { dbConnect } from "./src/lib/db/index.js";
-const port = process.env.PORT;
+const port = process.env.PORT || 3000; 
 dbConnect();
 const server = app.listen(port, () => {
   console.log("Server is listen on port", port);
