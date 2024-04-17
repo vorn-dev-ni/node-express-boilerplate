@@ -5,7 +5,7 @@ export const dbConnect = () => {
   mongoose
     .connect(uri)
     .then((result) => {
-      console.log("db is connected");
+      console.log("db is connected",uri);
     })
     .catch((error) => console.error(error));
 };

@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+  express:
+    build: ./ 
+    volumes:
+      - images:/app/public
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./.env 
+    depends_on:
+      - mongodb
+volumes:
+  images:
+  data:
+
+    
+    
+

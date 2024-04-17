@@ -9,11 +9,13 @@ import { dirname } from "path";
 import notFound from "./controllers/404.js";
 import { allowCrossDomain } from "./middleware/Cors.js";
 import { fileURLToPath } from "url";
+import router from "./routes/index.js"
 const __dirName = dirname(fileURLToPath(import.meta.url));
 const app = express();
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/images', express.static('images'));
+
+// app.use('/qr', express.static('images'));
 app.use(cors());
 app.use(mongoSanitize());
 app.use(helmet());
@@ -30,6 +32,7 @@ const limiter = rateLimit({
 // Apply the rate limiting middleware to all requests.
 app.use(limiter);
 app.use(allowCrossDomain);
+app.use('/api/v1',router)
 app.use((err, req, res, next) => {
   console.error("error", err);
   const errors = err.message?.trim() || err;

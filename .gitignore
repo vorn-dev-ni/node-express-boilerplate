@@ -4,3 +4,6 @@
 .env*
 #node_module
 node_module
+
+#docker
+Dockerfile
